@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" prefHeight="555.0" prefWidth="686.0" style="-fx-border-color: blue; -fx-border-width: 3; -fx-background-color: 00b4d8;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexis_addo.controlller.DashboardController">
+
+  <Button fx:id="goodsButton" layoutX="218.0" layoutY="249.0" minHeight="-Infinity" onAction="#goToGoodsManagement" prefHeight="54.0" prefWidth="161.0" style="-fx-background-color: purple;" text="Goods" textFill="#fffefe">
+    <font>
+      <Font name="Calibri Light" size="14.0" />
+    </font>
+  </Button>
+
+  <Button layoutX="429.0" layoutY="248.0" minHeight="-Infinity" onAction="#goToVendorManagement" prefHeight="54.0" prefWidth="172.0" style="-fx-background-color: purple;" text="Vendors" textFill="#fffbfb">
+    <font>
+      <Font name="Calibri Light" size="14.0" />
+    </font>
+  </Button>
+   <Text fill="#262526" layoutX="213.0" layoutY="164.0" style="fx-color: #e5989b" text="Welcome to Stock Master, your reliable inventory system.">
+      <font>
+         <Font name="Calibri" size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="214.0" layoutY="125.0" style="fx-color: #e5989b" text="Hi there!">
+      <font>
+         <Font name="Calibri Bold" size="21.0" />
+      </font>
+   </Text>
+   <Text fill="#262526" layoutX="214.0" layoutY="192.0" style="fx-color: #e5989b" text="Click the following options below to get started.">
+      <font>
+         <Font name="Calibri" size="16.0" />
+      </font>
+   </Text>
+   <Button layoutX="222.0" layoutY="338.0" minHeight="-Infinity" onAction="#goToBillManagement" prefHeight="54.0" prefWidth="155.0" style="-fx-background-color: purple;" text="Bills" textFill="#fffbfb">
+      <font>
+         <Font name="Calibri Light" size="14.0" />
+      </font>
+   </Button>
+   <Pane layoutX="3.0" layoutY="3.0" prefHeight="548.0" prefWidth="187.0" style="-fx-background-color: bde0fe;" />
+   <Text fill="#6b2222" layoutX="74.0" layoutY="285.0" style="fx-color: #e5989b" text="Menu">
+      <font>
+         <Font name="Calibri Bold" size="23.0" />
+      </font>
+   </Text>
+   <TitledPane animated="false" layoutX="300.0" layoutY="-58.0" text="untitled" />
+   <Pane layoutX="189.0" layoutY="4.0" prefHeight="40.0" prefWidth="495.0" style="-fx-background-color: a9def9;" />
+   <Text fill="#001a9e" layoutX="200.0" layoutY="32.0" style="fx-color: #e5989b" text="StockMaster">
+      <font>
+         <Font name="Calibri" size="26.0" />
+      </font>
+   </Text>
+   <Button layoutX="434.0" layoutY="336.0" minHeight="-Infinity" onAction="#goToVendorManagement" prefHeight="54.0" prefWidth="155.0" style="-fx-background-color: purple;" text="Reports" textFill="#fffbfb">
+      <font>
+         <Font name="Calibri Light" size="14.0" />
+      </font>
+   </Button>
+   <padding>
+      <Insets right="-2.5" />
+   </padding>
+</AnchorPane>

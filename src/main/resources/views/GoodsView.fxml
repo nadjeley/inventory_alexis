@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexis_addo.controlller.GoodsConnection">
+
+        <TableView fx:id="goodsTable" layoutX="219.0" layoutY="72.60000000000002" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="514.0" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="25.0">
+            <columns>
+                <TableColumn fx:id="columnName" prefWidth="110.0" text="Name" />
+                <TableColumn fx:id="columnCategory" prefWidth="150.0" text="Category" />
+                <TableColumn fx:id="columnQuantity" prefWidth="100.0" text="Quantity" />
+                <TableColumn fx:id="columnPrice" prefWidth="150.0" text="Price" />
+            </columns>
+        </TableView>
+
+        <GridPane alignment="CENTER" hgap="10" layoutX="101.0" layoutY="429.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="193.0" prefWidth="704.0" vgap="10" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="-70.0" AnchorPane.topAnchor="429.0">
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <font>
+               <Font name="Calibri Light" size="14.0" />
+            </font></Label>
+            <TextField fx:id="nameTextField" promptText="Enter name" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Category:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font>
+               <Font name="Calibri Light" size="14.0" />
+            </font></Label>
+            <ChoiceBox fx:id="categoryChoiceBox" prefHeight="26.0" prefWidth="339.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Beverages" />
+                        <String fx:value="Bread/Bakery" />
+                        <String fx:value="Canned/Jarred Goods" />
+                        <String fx:value="Dairy Products" />
+                        <String fx:value="Dry/Baking Goods" />
+                        <String fx:value="Frozen Products" />
+                        <String fx:value="Meat" />
+                        <String fx:value="Farm Produce" />
+                        <String fx:value="Home Cleaners" />
+                        <String fx:value="Paper Goods" />
+                        <String fx:value="Home Care" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+
+            <Label text="Quantity:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font>
+               <Font name="Calibri Light" size="14.0" />
+            </font></Label>
+            <TextField fx:id="quantityTextField" promptText="Enter quantity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+            <font>
+               <Font name="Calibri Light" size="14.0" />
+            </font></Label>
+            <TextField fx:id="priceTextField" promptText="Enter price" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <columnConstraints>
+            <ColumnConstraints maxWidth="83.0" minWidth="62.0" prefWidth="77.0" />
+            <ColumnConstraints maxWidth="163.60000000000002" minWidth="400.0" prefWidth="148.60000000000002" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints maxHeight="46.599999999999994" minHeight="23.6" prefHeight="26.6" />
+            <RowConstraints maxHeight="27.599999999999994" minHeight="4.599999999999994" prefHeight="24.599999999999994" />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+   <Pane layoutY="-10.0" prefHeight="664.0" prefWidth="192.0" style="-fx-background-color: a8dadc;">
+      <children>
+         <Label layoutX="60.0" layoutY="332.0" text="Goods" textFill="#325917">
+            <font>
+               <Font name="Calibri" size="30.0" />
+            </font>
+         </Label>
+      </children>
+   </Pane>
+         <Button layoutX="348.0" layoutY="609.0" onAction="#handleRemoveGoods" style="-fx-background-color: d8e2dc;" text="Remove Goods">
+         <font>
+            <Font name="Calibri Light" size="14.0" />
+         </font>
+   </Button>
+
+               <Button layoutX="219.0" layoutY="608.0" onAction="#handleAddGoods" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: d8e2dc;" text="Add Goods">
+         <font>
+            <Font name="Calibri Light" size="14.0" />
+         </font>
+   </Button>
+
+
+
+
+
+</AnchorPane>

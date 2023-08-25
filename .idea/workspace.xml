@@ -4,11 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca94ba26-ab2f-4e43-8a05-e691b46143b2" name="Changes" comment="" />
+    <list default="true" id="6bc1a0dc-8f23-4ad6-b17b-8c5297b29904" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/CreateBillPopUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillsConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillsConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/DatabaseConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/BillsManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/BillsManagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/CreateBillPopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/CreateBillPopUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/GoodsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/GoodsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/VendorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/VendorView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -16,7 +47,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2UDBvenEQthRuttW6udnvsf67zw" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2RoHB6o3nIudNBZdr6nMdViNcI6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -28,23 +62,48 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/OWNER/Documents/LEVEL 300/2nd Semester/DCIT 308/alexis_addo/src/main/java/com/example/alexis_addo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/OWNER/Documents/Github/inventory_alexis&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OWNER\Documents\LEVEL 300\2nd Semester\DCIT 308\alexis_addo\src\main\java\com\example\alexis_addo\controlller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OWNER\Documents\LEVEL 300\2nd Semester\DCIT 308\alexis_addo\src\main\resources" />
+      <recent name="C:\Users\OWNER\Documents\LEVEL 300\2nd Semester\DCIT 308\alexis_addo\src\main\resources\com\example\alexis_addo" />
+      <recent name="C:\Users\OWNER\Documents\LEVEL 300\2nd Semester\DCIT 308\alexis_addo\src\main\java\com\example\alexis_addo\controlller" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.alexis_addo.Main" />
-      <module name="inventory_alexis" />
+      <module name="alexis_addo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.alexis_addo.*" />
+          <option name="PATTERN" value="com.example.alexis_addo.controlller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="inventory_alexis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="inventory_alexis" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -53,11 +112,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ca94ba26-ab2f-4e43-8a05-e691b46143b2" name="Changes" comment="" />
-      <created>1692464520392</created>
+      <changelist id="6bc1a0dc-8f23-4ad6-b17b-8c5297b29904" name="Changes" comment="" />
+      <created>1687909380118</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1692464520392</updated>
+      <updated>1687909380118</updated>
     </task>
     <servers />
   </component>
@@ -72,7 +131,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="solution" />
+                        <option value="origin/adjeley" />
                       </list>
                     </value>
                   </entry>
@@ -83,5 +142,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

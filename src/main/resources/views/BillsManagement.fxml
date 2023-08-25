@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="555.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alexis_addo.controlller.BillsConnection">
+
+
+        <Label layoutX="404.0" layoutY="51.0" text="Your Bills">
+      <font>
+         <Font name="Candara Bold" size="20.0" />
+      </font></Label>
+        <TableView fx:id="billTable" layoutX="238.0" layoutY="97.0" prefHeight="335.0" prefWidth="417.0">
+            <columns>
+                <TableColumn  fx:id="columnBillID" minWidth="140.0" text="ID" />
+                <TableColumn fx:id="columnDate"  minWidth="140.0" text="Date" />
+                <TableColumn  fx:id="columnTotalAmount" minWidth="140.0" text="Total Amount" />
+            </columns>
+        </TableView>
+        <Button layoutX="300.0" layoutY="458.0" prefHeight="43.0" prefWidth="86.0" style="-fx-background-color: dbcbd8;" text="Create Bill" textFill="#282828" onAction="#handleCreateBill">
+      <font>
+         <Font name="Calibri" size="14.0" />
+      </font></Button>
+        <Button layoutX="495.0" layoutY="458.0" prefHeight="43.0" prefWidth="86.0" style="-fx-background-color: dbcbd8;" text="Remove Bill"  onAction="#handleRemoveBill">
+      <font>
+         <Font name="Calibri" size="14.0" />
+      </font></Button>
+
+   <Pane layoutX="-10.0" prefHeight="555.0" prefWidth="200.0" style="-fx-background-color: purple;">
+      <children>
+         <Label layoutX="72.0" layoutY="253.0" text="Bills" textFill="WHITE">
+            <font>
+               <Font name="Calibri" size="30.0" />
+            </font>
+         </Label>
+      </children></Pane>
+
+</AnchorPane>

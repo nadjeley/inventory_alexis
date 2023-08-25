@@ -11,3 +11,6 @@ It is a Java based application designed using JavaFx and connnected to MySQl dat
 ## Special Thanks
 My warmest appreciaton goes to my friends @asabrampah and @dzid0r for the support system and valuable input provided throughout the project.
 And again to @niiadoteibrown for asssistance given through tutorial videos.
+
+## Solution to Work
+You can find my work in the second branch named "solution".

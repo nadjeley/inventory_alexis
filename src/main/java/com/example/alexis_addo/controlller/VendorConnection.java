@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendorConnection {
@@ -59,6 +60,8 @@ public class VendorConnection {
     private Connection connection;
     private VendorController vendorController;
     private DatabaseConnector databaseConnector;
+
+    private ObservableList<Vendor> vendorList = FXCollections.observableArrayList();
     public void initialize() {
 
         setupTableView();
@@ -75,16 +78,46 @@ public class VendorConnection {
         vendorController = new VendorController(databaseConnector); // Instantiate VendorController using DatabaseConnector
     }
     private void setupTableView() {
+
+
         // Set up cell value factories for each column
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         columnLocation.setCellValueFactory(new PropertyValueFactory<>("location"));
 
-        // Set the item list for the TableView
-        ObservableList<Vendor> vendorList = FXCollections.observableArrayList();
+
         vendorTable.setItems(vendorList);
+
+        fetchDataFromDatabase();
+
     }
+
+    private void fetchDataFromDatabase() {
+        //List<Vendor> vendorData = new ArrayList<>();
+
+        String selectQuery = "SELECT id, name, phone, location FROM vendor";
+
+        try (Connection connection = new DatabaseConnector().getConnection();
+             PreparedStatement statement = connection.prepareStatement(selectQuery);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String phone = resultSet.getString("phone");
+                String location = resultSet.getString("location");
+
+                Vendor vendor = new Vendor(id, name, phone, location);
+                vendorList.add(vendor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //return vendorData;
+    }
+
 
 
 
@@ -113,29 +146,7 @@ public class VendorConnection {
     }
 
 
-//    @FXML
-//    private void handleRemoveVendor() {
-//        Vendor selectedVendor = vendorTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedVendor != null) {
-//            String deleteQuery = "DELETE FROM vendor WHERE id = ?";
-//            try (Connection connection = databaseConnector.getConnection();
-//                 PreparedStatement statement = connection.prepareStatement(deleteQuery)){
-//                 statement.setInt(1, selectedVendor.getId());
-//
-//                int rowsAffected = statement.executeUpdate();
-//                if (rowsAffected > 0) {
-//                    System.out.println("Vendor removed from the database");
-//
-//                    vendorController.removeVendor(selectedVendor.getId());
-//
-//                    updateTableView();
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+
   @FXML
   private void handleRemoveVendor() throws SQLException {
     Vendor selectedVendor = vendorTable.getSelectionModel().getSelectedItem();
@@ -172,6 +183,17 @@ public class VendorConnection {
             refreshTableView();
         }
     }
+    @FXML
+    private void handleViewButton() {
+
+
+        // Fetch data from the database and populate the vendorList
+        fetchDataFromDatabase();
+
+        // Set the data in the TableView
+        vendorTable.setItems(vendorList);
+    }
+
     private void updateTableView() throws SQLException {
         List<Vendor> allVendors = vendorController.getAllVendors();
         ObservableList<Vendor> vendorList = FXCollections.observableArrayList(allVendors);

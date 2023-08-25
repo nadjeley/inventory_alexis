@@ -5,26 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bc1a0dc-8f23-4ad6-b17b-8c5297b29904" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/CreateBillPopUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillsConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/BillsConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/CreateBillPopUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/CreateBillPopUpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/GoodsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/controlller/VendorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/DatabaseConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/DatabaseConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/alexis_addo/model/dataStructures/Goods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/BillsManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/BillsManagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/views/CreateBillPopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/CreateBillPopUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/BillsManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/BillsView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/GoodsController.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/GoodsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/GoodsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/ReportManagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/ReportView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/views/UpdateVendorWindow.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/views/VendorView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/views/VendorView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +43,14 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -131,7 +136,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/adjeley" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>

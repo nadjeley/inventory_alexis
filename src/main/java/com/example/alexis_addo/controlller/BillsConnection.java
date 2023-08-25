@@ -40,8 +40,8 @@ public class BillsConnection {
     @FXML
     private TableView<Bill> billTable;
 
-    @FXML
-    private BillController billsController;
+    //@FXML
+    //private BillController billsController;
 
     @FXML
     private Button createBillButton;
@@ -53,6 +53,8 @@ public class BillsConnection {
 
 
     private Statement statement;
+
+    private ObservableList<Bill> billsList = FXCollections.observableArrayList();
 
 
     public void initialize() {
@@ -74,6 +76,33 @@ public class BillsConnection {
         ObservableList<Bill> billsList = FXCollections.observableArrayList();
         billTable.setItems(billsList);
     }
+
+//    @FXML
+//    private void handleViewBills() {
+//        try (Connection connection = databaseConnector.getConnection();
+//             Statement statement = connection.createStatement()) {
+//            String selectQuery = "SELECT * FROM bill";
+//            ResultSet resultSet = statement.executeQuery(selectQuery);
+//
+//            // Clear existing data in the TableView
+//            billsList.clear();
+//
+//            // Fetch all bills from the result set and add them to the ObservableList
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                Date date = resultSet.getDate("date");
+//                double total_amount = resultSet.getDouble("total_amount");
+//                billsList.add(new Bill(id, date.toLocalDate(), total_amount));
+//            }
+//
+//            // Refresh the TableView to reflect the new data
+//            billTable.refresh();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 
     @FXML
     private void handleCreateBill() {
@@ -126,7 +155,7 @@ public class BillsConnection {
                     billTable.getItems().add(newBill);
 
                     // Close the popup
-                    // Stage stage = (Stage) idField.getScene().getWindow();
+
                     stage.close();
                 }
             } catch (SQLException e) {
@@ -139,41 +168,9 @@ public class BillsConnection {
 
 
 
-    //     Add event handler for the "Remove Bill" button
-//    @FXML
-//    private void handleRemoveBill() {
-//
-//        if (databaseConnector == null) {
-//            databaseConnector = new DatabaseConnector();
-//        }
-//        // Get the selected bill from the table
-//        Bill selectedBill = billTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedBill != null) {
-//            // Remove the selected bill from the table
-//            billTable.getItems().remove(selectedBill);
-//
-//            // Delete the selected bill from the database
-//            String deleteQuery = "DELETE FROM bill WHERE billID = ?";
-//            try (Connection connection = databaseConnector.getConnection();
-//                 PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
-//
-//                statement.setInt(1, selectedBill.getBillID());
-//
-//                int rowsAffected = statement.executeUpdate();
-//                if (rowsAffected > 0) {
-//                    System.out.println("Bill removed from the database");
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
-//}
 
 
-    //     Add event handler for the "Remove Bill" button
+    // Event handler for the "Remove Bill" button
     @FXML
     private void handleRemoveBill() {
 
@@ -204,7 +201,54 @@ public class BillsConnection {
         }
 
     }
+//    @FXML
+//    private void handleViewBills() {
+//        Connection connection = null;
+//        Statement statement = null;
+//        ResultSet resultSet = null;
+//
+//        try {
+//            connection = databaseConnector.getConnection();
+//            String selectQuery = "SELECT * FROM bill";
+//            statement = connection.createStatement();
+//            resultSet = statement.executeQuery(selectQuery);
+//
+//            // Clear existing data in the TableView
+//            billsList.clear();
+//
+//            // Fetch all bills from the result set and add them to the ObservableList
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                Date date = resultSet.getDate("date");
+//                double totalAmount = resultSet.getDouble("total_amount");
+//                billsList.add(new Bill(id, date.toLocalDate(), totalAmount));
+//            }
+//
+//            // Refresh the TableView to reflect the new data
+//            billTable.refresh();
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (resultSet != null) {
+//                    resultSet.close();
+//                }
+//                if (statement != null) {
+//                    statement.close();
+//                }
+//                if (connection != null) {
+//                    connection.close();
+//                }
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+
 }
+
 
 
 

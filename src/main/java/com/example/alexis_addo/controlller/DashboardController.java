@@ -15,36 +15,39 @@ public class DashboardController {
 
     public void initialize() {
 
-        // Other initialization code
+
     }
 
 
-
+    //Event handler for the Goods Button
     @FXML
     private void goToGoodsManagement() {
             // Code to navigate to the Goods Management page goes here
             loadFXML("/views/GoodsView.fxml");
     }
 
+    //Event handler for the Vendor Button
     @FXML
         private void goToVendorManagement() {
             // Code to navigate to the Vendor Management page goes here
             loadFXML("/views/VendorView.fxml");
     }
 
+    //Event handler for the Bills Button
     @FXML
         private void goToBillManagement() {
             // Code to navigate to the Bill Management page goes here
-            loadFXML("/views/BillsManagement.fxml");
+            loadFXML("/views/BillsView.fxml");
     }
 
+    //Event handler for the Report Button
     @FXML
     private void goToReportManagement() {
         // Code to navigate to the Report Management page goes here
-        loadFXML("/views/ReportManagement.fxml");
+        loadFXML("/views/ReportView.fxml");
     }
 
-
+    // Method to Load The respective views.
     private void loadFXML(String fxmlPath) {
         try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));

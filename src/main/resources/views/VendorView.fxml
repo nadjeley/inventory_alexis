@@ -20,14 +20,14 @@
                 <TableColumn fx:id="columnLocation" prefWidth="140.0" text="Location" />
             </columns>
         </TableView>
-        <Button layoutX="557.0" layoutY="534.0" maxWidth="-Infinity" onAction="#handleAddVendor" style="-fx-background-color: fcbf49;" text="Add Vendor">
+        <Button layoutX="238.0" layoutY="534.0" maxWidth="-Infinity" onAction="#handleAddVendor" style="-fx-background-color: fcbf49;" text="Add Vendor">
          <VBox.margin>
             <Insets right="300.0" top="10.0" />
          </VBox.margin>
          <font>
             <Font name="Calibri Light" size="14.0" />
          </font></Button>
-        <Button layoutX="429.0" layoutY="534.0" maxWidth="-Infinity" onAction="#handleRemoveVendor" style="-fx-background-color: fcbf49;" text="Remove Vendor" VBox.vgrow="NEVER">
+        <Button layoutX="336.0" layoutY="534.0" maxWidth="-Infinity" onAction="#handleRemoveVendor" style="-fx-background-color: fcbf49;" text="Remove Vendor" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="170.0" right="-100.0" top="-35.3" />
          </VBox.margin>
@@ -38,7 +38,7 @@
          <Label layoutX="235.0" layoutY="422.0" text="ID:" />
          <Label layoutX="540.0" layoutY="419.0" text="Name:" />
          <TextField fx:id="nameTextField" layoutX="584.0" layoutY="415.0" prefHeight="26.0" prefWidth="138.0" />
-         <Button layoutX="348.0" layoutY="534.0" onAction="#handleUpdateVendor" style="-fx-background-color: fcbf49;" text="Update" >
+         <Button layoutX="600.0" layoutY="534.0" onAction="#handleUpdateVendor" style="-fx-background-color: fcbf49;" text="Update">
       <font>
          <Font name="Calibri Light" size="14.0" />
       </font>
@@ -56,6 +56,16 @@
          </Label>
       </children>
    </Pane>
+   <Label layoutX="447.0" layoutY="23.0" textFill="#2e2d2b">
+      <font>
+         <Font name="Calibri Bold" size="22.0" />
+      </font>
+   </Label>
+   <Button layoutX="490.0" layoutY="534.0" maxWidth="-Infinity" onAction="#handleViewButton" style="-fx-background-color: fcbf49;" text="View Vendor">
+      <font>
+         <Font name="Calibri Light" size="14.0" />
+      </font>
+   </Button>
 
 
 </AnchorPane>

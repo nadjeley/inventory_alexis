@@ -1,8 +1,7 @@
 package com.example.alexis_addo;
 
 
-import com.example.alexis_addo.controlller.BillController;
-import com.example.alexis_addo.controlller.GoodsConnection;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -19,6 +19,7 @@ import java.util.List;
 public class ReportController {
     private DatabaseConnector databaseConnector;
 
+    //initialise database connection
     public ReportController() {
         databaseConnector = new DatabaseConnector();
     }
@@ -109,49 +110,6 @@ public class ReportController {
     }
 
 
-    // Method to generate a report of all goods
-//    public void generateGoodsReport(List<Goods> goodsList) {
-//        System.out.println("Goods Report:");
-//        System.out.println("--------------");
-//        for (Goods goods : goodsList) {
-//            System.out.println("Name: " + goods.getName());
-//            System.out.println("Category: " + goods.getCategory());
-//            System.out.println("Quantity: " + goods.getQuantity());
-//            System.out.println("Price: " + goods.getPrice());
-//            System.out.println();
-//        }
-//    }
-//    @FXML
-//    // Method to generate a report of all vendors
-//    public void generateVendorsReport(List<Vendor> vendorList) {
-//        System.out.println("Vendors Report:");
-//        System.out.println("---------------");
-//        for (Vendor vendor : vendorList) {
-//            System.out.println("Name: " + vendor.getName());
-//            System.out.println("Phone: " + vendor.getPhone());
-//            System.out.println("Location: " + vendor.getLocation());
-//            System.out.println();
-//        }
-//    }
-
-    // Method to generate a report of all bills
-//    public void generateBillsReport(List<Bill> billList) {
-//        System.out.println("Bills Report:");
-//        System.out.println("-------------");
-//        for (Bill bill : billList) {
-//            System.out.println("Bill ID: " + bill.getBillID());
-//            System.out.println("Date: " + bill.getDate());
-//            System.out.println("Total Amount: " + bill.getTotalAmount());
-//            System.out.println("Purchased Goods:");
-//            for (Goods goods : bill.getPurchasedGoods()) {
-//                System.out.println(goods.getName() + " - Category: " + goods.getCategory() + " - Quantity: " + goods.getQuantity());
-//            }
-//            System.out.println();
-//        }
-//    }
-
-
-
     private List<Goods> fetchGoodsDataFromDatabase() {
         List<Goods> goodsList = new ArrayList<>();
 
@@ -203,31 +161,6 @@ public class ReportController {
         return billList;
     }
 
-//    private List<Goods> fetchPurchasedGoodsForBill(Connection connection, int billID) {
-//        List<Goods> purchasedGoods = new ArrayList<>();
-//
-//        String selectQuery = "SELECT goods.name, goods.category, goods.quantity, goods.price FROM goods " +
-//                "JOIN bill_goods ON goods.name = bill_goods.goodsName AND bill_goods.billID = ?";
-//
-//        try (PreparedStatement statement = connection.prepareStatement(selectQuery)) {
-//            statement.setInt(1, billID);
-//            ResultSet resultSet = statement.executeQuery();
-//
-//            while (resultSet.next()) {
-//                String name = resultSet.getString("name");
-//                String category = resultSet.getString("category");
-//                int quantity = resultSet.getInt("quantity");
-//                double price = resultSet.getDouble("price");
-//
-//                Goods goods = new Goods(name, category, quantity, price);
-//                purchasedGoods.add(goods);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return purchasedGoods;
-//    }
     private List<Vendor> fetchVendorDataFromDatabase() {
         List<Vendor> vendorList = new ArrayList<>();
 

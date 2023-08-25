@@ -98,6 +98,11 @@
             <Font name="Calibri Light" size="14.0" />
          </font>
    </Button>
+   <Button layoutX="484.0" layoutY="607.0"   prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: d8e2dc;" text="View Goods">
+      <font>
+         <Font name="Calibri Light" size="14.0" />
+      </font>
+   </Button>
 
 
 

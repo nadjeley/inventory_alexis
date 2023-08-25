@@ -17,7 +17,7 @@ public class VendorController {
 
     private Connection connection;
 
-        DatabaseConnector databaseConnector = new DatabaseConnector(); // Create a DatabaseConnector instance
+    DatabaseConnector databaseConnector = new DatabaseConnector(); // Create a DatabaseConnector instance
 
     private Map<Integer, Vendor> vendorMap;  // HashMap to store vendor data
 

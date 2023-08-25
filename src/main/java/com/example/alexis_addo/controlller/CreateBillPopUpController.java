@@ -49,38 +49,6 @@ public class CreateBillPopUpController {
 
     @FXML
     private void onConfirmButtonClicked(ActionEvent event) {
-       // databaseConnector = new DatabaseConnector();
-        // Perform actions when the Confirm button is clicked
-//        Integer id = Integer.valueOf(idField.getText());
-//        LocalDate date = datePicker.getValue();
-//        double totalAmount = Double.parseDouble(totalAmountField.getText());
-//
-//        // Insert the new bill into the database
-//        String insertQuery = "INSERT INTO bill (id, date, totalAmount) VALUES (?, ?, ?)";
-//
-//        try (Connection connection = databaseConnector.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(insertQuery)) {
-//            statement.setInt(1, Integer.parseInt(String.valueOf((id))));
-//            statement.setDate(2, Date.valueOf(date));
-//            statement.setDouble(3, totalAmount);
-//
-//            int rowsAffected = statement.executeUpdate();
-//            if (rowsAffected > 0) {
-//                System.out.println("New bill added to the database");
-//
-//                // Create a new Bill object
-//                Bill newBill = new Bill(id, date, totalAmount);
-//
-//                // Add the new Bill to the TableView
-//                billTable.getItems().add(newBill);
-//
-//                // Close the popup
-//                Stage stage = (Stage) idField.getScene().getWindow();
-//                stage.close();
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
 
         confirmed = true;
         closePopup();

@@ -38,15 +38,15 @@
          <Font name="Calibri Light" size="14.0" />
       </font>
    </Button>
-   <Pane layoutX="3.0" layoutY="3.0" prefHeight="548.0" prefWidth="187.0" style="-fx-background-color: bde0fe;" />
-   <Text fill="#6b2222" layoutX="74.0" layoutY="285.0" style="fx-color: #e5989b" text="Menu">
+   <Pane layoutX="3.0" layoutY="3.0" prefHeight="548.0" prefWidth="155.0" style="-fx-background-color: bde0fe;" />
+   <Text fill="#6b2222" layoutX="53.0" layoutY="285.0" style="fx-color: #e5989b" text="Menu">
       <font>
          <Font name="Calibri Bold" size="23.0" />
       </font>
    </Text>
    <TitledPane animated="false" layoutX="300.0" layoutY="-58.0" text="untitled" />
-   <Pane layoutX="189.0" layoutY="4.0" prefHeight="40.0" prefWidth="495.0" style="-fx-background-color: a9def9;" />
-   <Text fill="#001a9e" layoutX="200.0" layoutY="32.0" style="fx-color: #e5989b" text="StockMaster">
+   <Pane layoutX="158.0" layoutY="3.0" prefHeight="43.0" prefWidth="527.0" style="-fx-background-color: a9def9;" />
+   <Text fill="#001a9e" layoutX="186.0" layoutY="32.0" style="fx-color: #e5989b" text="StockMaster">
       <font>
          <Font name="Calibri" size="26.0" />
       </font>

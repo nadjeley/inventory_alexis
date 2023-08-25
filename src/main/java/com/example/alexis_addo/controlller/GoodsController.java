@@ -3,9 +3,12 @@ package com.example.alexis_addo.controlller;
 import com.example.alexis_addo.model.DatabaseConnector;
 
 import com.example.alexis_addo.model.dataStructures.Goods;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -27,8 +30,9 @@ public class GoodsController {
     private List<Goods> homeCleanersList;  // List for home cleaners
     private List<Goods> paperGoodsList;  // List for paper goods
     private List<Goods> homeCareList;  // List for home care
+    private DatabaseConnector databaseConnector = new DatabaseConnector();
     private Connection connection;
-    DatabaseConnector databaseConnector = new DatabaseConnector();
+
     private Map<String, String> categoryMap;
 
 
@@ -164,6 +168,7 @@ public class GoodsController {
 
     }
 
+
     // Method to remove a goods item
     public void removeGoods(Goods goods) {
         goodsList.remove(goods);
@@ -206,6 +211,7 @@ public class GoodsController {
         }
     }
 
+
     // Method to retrieve goods by category
     public List<Goods> getGoodsByCategory(String category) {
         List<Goods> categoryGoods = new ArrayList<>();
@@ -234,6 +240,29 @@ public class GoodsController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public List<Goods> fetchAllGoods() {
+        List<Goods> allGoods = new ArrayList<>();
+        String selectQuery = "SELECT name, category, quantity, price FROM goods";
+
+        try (Connection connection = DatabaseConnector.getConnection();
+             PreparedStatement statement = connection.prepareStatement(selectQuery);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String category = resultSet.getString("category");
+                int quantity = resultSet.getInt("quantity");
+                double price = resultSet.getDouble("price");
+
+                Goods goods = new Goods(name, category, quantity, price);
+                allGoods.add(goods);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allGoods;
     }
 
 

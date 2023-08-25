@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class  GoodsConnection {
@@ -56,10 +57,12 @@ public class  GoodsConnection {
 
     private DatabaseConnector databaseConnector; // Use DatabaseConnector for connection handling
 
+    private ObservableList<Goods> goodsList = FXCollections.observableArrayList();
     private Connection connection;
 
     public void initialize() {
-
+        DatabaseConnector databaseConnector = new DatabaseConnector();
+        goodController = new GoodsController(databaseConnector);
         setupTableView();
         connectToDatabase();
         setupGoodsController();
@@ -69,7 +72,7 @@ public class  GoodsConnection {
     //public void setBillsController(BillController billsController) {
     // this.billsController = billsController;
     //  }
-    private void connectToDatabase() {
+    private void connectToDatabase( ) {
         DatabaseConnector databaseConnector = new DatabaseConnector(); // Create an instance of DatabaseConnector
         connection = DatabaseConnector.getConnection(); // Initialize the connection using DatabaseConnector
     }
@@ -87,75 +90,78 @@ public class  GoodsConnection {
         columnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Set the item list for the TableView
-        ObservableList<Goods> goodsList = FXCollections.observableArrayList();
+        //ObservableList<Goods> goodsList = FXCollections.observableArrayList();
+        fetchAllGoods();
         goodsTable.setItems(goodsList);
     }
+    public void fetchAllGoods() {
 
-    // Connect to the database
+
+        try (Connection connection = databaseConnector.getConnection();
+             Statement statement = connection.createStatement()) {
+
+            String selectQuery = "SELECT * FROM goods";
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String category = resultSet.getString("category");
+                int quantity = resultSet.getInt("quantity");
+                double price = resultSet.getDouble("price");
+
+                Goods goods = new Goods(name, category, quantity, price);
+                goodsList.add(goods);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
-    // Create the goods table in the database
-    // private void createGoodsTable() {
-    // try {
-    //String createTableQuery = "CREATE TABLE IF NOT EXISTS goods (" +
-    // "name VARCHAR(255)," +
-    // "category VARCHAR(255)," +
-    //"quantity INT," +
-    // "price DOUBLE)";
-    //statement.executeUpdate(createTableQuery);
-    // System.out.println("Goods table created");
-    // } catch (SQLException e) {
-    // e.printStackTrace();
-    //}
-    // }
+    }
 
-    // Add event handler for the "Add Goods" button
-
-    //    @FXML
-//    private void handleAddGoods() {
-//        if (databaseConnector == null) {
-//            databaseConnector = new DatabaseConnector();
-//        }
+//    @FXML
+//    private void handleView() {
+//        fetchAllGoods();
 //
-//        // Get the input values from the UI fields
-//        String name = nameTextField.getText();
-//        String category = categoryChoiceBox.getValue(); // Use the selected value from the ChoiceBox
-//        int quantity = Integer.parseInt(quantityTextField.getText());
-//        double price = Double.parseDouble(priceTextField.getText());
+//        goodsTable.setItems(goodsList);
+//    }
+//    @FXML
+//    private void handleViews() {
+//        // Clear the existing table data
+//        goodsTable.getItems().clear();
 //
+//        // Fetch all goods from the database using the GoodsController
+//        List<Goods> allGoods = goodController.fetchAllGoods();
 //
-//        // Insert the new goods into the database
-//        String insertQuery = "INSERT INTO goods (name, category, quantity, price) " +
-//                "VALUES (?, ?, ?, ?)";
+//        // Set the fetched data in the TableView
+//        goodsTable.getItems().addAll(allGoods);
+//    }
+
+
+
+//    private void fetchGDataFromDatabase() {
+//        String selectQuery = "SELECT name, category, quantity, price FROM goods";
 //
 //        try (Connection connection = DatabaseConnector.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(insertQuery)) {
-//            statement.setString(1, name);
-//            statement.setString(2, String.valueOf(category));
-//            statement.setInt(3, quantity);
-//            statement.setDouble(4, price);
+//             PreparedStatement statement = connection.prepareStatement(selectQuery);
+//             ResultSet resultSet = statement.executeQuery()) {
 //
-//            int rowsAffected = statement.executeUpdate();
-//            if (rowsAffected > 0) {
-//                System.out.println("New goods added to the database");
+//            while (resultSet.next()) {
+//                String name = resultSet.getString("name");
+//                String category = resultSet.getString("category");
+//                int quantity = resultSet.getInt("quantity");
+//                double price = resultSet.getDouble("price");
 //
-//                // Create a new goods item
-//                Goods newGoods = new Goods(name, category, quantity, price);
-//
-//                // Add the new goods to the table
-//                goodsTable.getItems().add(newGoods);
-//
-//                // Clear the text fields
-//                nameTextField.clear();
-//                categoryChoiceBox.getSelectionModel().clearSelection(); // Clear the selected item in ChoiceBox
-//                quantityTextField.clear();
-//                priceTextField.clear();
+//                Goods goods = new Goods(name, category, quantity, price);
+//                goodsList.add(goods);
 //            }
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-//
-//    }
+   // }
+
+
     @FXML
     private void handleAddGoods() throws SQLException {
         String name = nameTextField.getText();
@@ -174,6 +180,7 @@ public class  GoodsConnection {
         refreshTableView();
     }
 
+
     private void refreshTableView() throws SQLException {
         List<Goods> goods= goodController.getGoodsList();
         goodsTable.getItems().setAll(goods);
@@ -186,27 +193,7 @@ public class  GoodsConnection {
     // Add event handler for the "Remove Goods" button
     @FXML
     private void handleRemoveGoods() throws SQLException {
-        // Get the selected goods from the table
-//        Goods selectedGoods = goodsTable.getSelectionModel().getSelectedItem();
-//
-//        if (selectedGoods != null) {
-//            // Remove the selected goods from the table
-//            goodsTable.getItems().remove(selectedGoods);
-//
-//            // Delete the selected goods from the database
-//            String deleteQuery = "DELETE FROM goods WHERE name = ?";
-//            try (Connection connection = databaseConnector.getConnection();
-//                 PreparedStatement statement = connection.prepareStatement(deleteQuery)) {
-//                int rowsAffected = statement.executeUpdate();
-//                if (rowsAffected > 0) {
-//                    System.out.println("Goods removed from the database");}
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//
-//
-//        }
-//    }
+
         Goods selectedGoods = goodsTable.getSelectionModel().getSelectedItem();
 
         if (selectedGoods != null) {
@@ -218,7 +205,9 @@ public class  GoodsConnection {
 
 
 
-        // Other methods and logic related to goods management
+
 
     }
+
+
 }

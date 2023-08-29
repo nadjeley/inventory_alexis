@@ -14,3 +14,8 @@ And again to @niiadoteibrown for asssistance given through tutorial videos.
 
 ## Solution to Work
 You can find my work in the second branch named "solution".
+
+## Name and ID
+Alexis Adjeley Addo
+10896904
+

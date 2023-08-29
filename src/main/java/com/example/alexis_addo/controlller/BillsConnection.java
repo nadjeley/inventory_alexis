@@ -13,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
@@ -25,6 +22,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillsConnection {
 
@@ -40,14 +39,8 @@ public class BillsConnection {
     @FXML
     private TableView<Bill> billTable;
 
-    //@FXML
-    //private BillController billsController;
 
-    @FXML
-    private Button createBillButton;
-
-    @FXML
-    private Button removeBillButton;
+    private Connection connection;
 
     private DatabaseConnector databaseConnector = new DatabaseConnector();
 
@@ -60,8 +53,13 @@ public class BillsConnection {
     public void initialize() {
         // call the method to display the table to display data
         setupTableView();
+        connectToDatabase();
 
     }
+    private void connectToDatabase() {
+        connection = DatabaseConnector.getConnection();
+    }
+
 
     private void setupTableView() {
         // Set up cell value factories for each column
@@ -77,33 +75,45 @@ public class BillsConnection {
         billTable.setItems(billsList);
     }
 
-//    @FXML
-//    private void handleViewBills() {
-//        try (Connection connection = databaseConnector.getConnection();
-//             Statement statement = connection.createStatement()) {
-//            String selectQuery = "SELECT * FROM bill";
-//            ResultSet resultSet = statement.executeQuery(selectQuery);
-//
-//            // Clear existing data in the TableView
-//            billsList.clear();
-//
-//            // Fetch all bills from the result set and add them to the ObservableList
-//            while (resultSet.next()) {
-//                int id = resultSet.getInt("id");
-//                Date date = resultSet.getDate("date");
-//                double total_amount = resultSet.getDouble("total_amount");
-//                billsList.add(new Bill(id, date.toLocalDate(), total_amount));
-//            }
-//
-//            // Refresh the TableView to reflect the new data
-//            billTable.refresh();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    //Event handler for Viewing Bills
+    @FXML
+    private void handleViewBills() {
+        try {
+            List<Bill> bills = fetchDataFromDatabase();
+            ObservableList<Bill> billList = FXCollections.observableArrayList(bills);
+            billTable.setItems(billList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<Bill> fetchDataFromDatabase() throws SQLException {
+        List<Bill> billData = new ArrayList<>();
+
+        String selectQuery = "SELECT id, date, total_amount FROM bill";
+
+        try (PreparedStatement statement = connection.prepareStatement(selectQuery);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                int billID = resultSet.getInt("id");
+                LocalDate date = resultSet.getDate("date").toLocalDate();
+                double totalAmount = resultSet.getDouble("total_amount");
+
+                Bill bill = new Bill(billID, date, totalAmount);
+                billData.add(bill);
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+
+        return billData;
+    }
 
 
+
+
+// Event handler for Creating Bills
     @FXML
     private void handleCreateBill() {
 
@@ -131,9 +141,16 @@ public class BillsConnection {
         // Retrieve the entered data from the popup controller
         CreateBillPopUpController popupController = loader.getController();
         if (popupController.isConfirmed()) {
-            int id = Integer.valueOf(popupController.getEnteredId());
-            LocalDate date = LocalDate.parse(popupController.getEnteredDate());
-            double total_amount = Double.parseDouble(popupController.getEnteredTotalAmount());
+            String enteredId = popupController.getEnteredId();
+            String enteredDate = popupController.getEnteredDate();
+            String enteredTotalAmount = popupController.getEnteredTotalAmount();
+
+            // Check if any of the entered data is null
+            if (enteredId != null && enteredDate != null && !enteredTotalAmount.isEmpty()) {
+                int id = Integer.parseInt(enteredId);
+                LocalDate date = LocalDate.parse(enteredDate);
+                double total_amount = Double.parseDouble(enteredTotalAmount);
+
 
             //Insert the new bill into the database
             String insertQuery = "INSERT INTO bill (id, date, total_amount) VALUES (?, ?, ?)";
@@ -161,9 +178,23 @@ public class BillsConnection {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-    }
 
+            }else {
+                // Handle missing data with a pop-up message or other feedback
+                showAlert("Please fill in all the fields.");
+            }
+        }
+        }
+
+
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Missing Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 
 
@@ -201,50 +232,7 @@ public class BillsConnection {
         }
 
     }
-//    @FXML
-//    private void handleViewBills() {
-//        Connection connection = null;
-//        Statement statement = null;
-//        ResultSet resultSet = null;
-//
-//        try {
-//            connection = databaseConnector.getConnection();
-//            String selectQuery = "SELECT * FROM bill";
-//            statement = connection.createStatement();
-//            resultSet = statement.executeQuery(selectQuery);
-//
-//            // Clear existing data in the TableView
-//            billsList.clear();
-//
-//            // Fetch all bills from the result set and add them to the ObservableList
-//            while (resultSet.next()) {
-//                int id = resultSet.getInt("id");
-//                Date date = resultSet.getDate("date");
-//                double totalAmount = resultSet.getDouble("total_amount");
-//                billsList.add(new Bill(id, date.toLocalDate(), totalAmount));
-//            }
-//
-//            // Refresh the TableView to reflect the new data
-//            billTable.refresh();
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            try {
-//                if (resultSet != null) {
-//                    resultSet.close();
-//                }
-//                if (statement != null) {
-//                    statement.close();
-//                }
-//                if (connection != null) {
-//                    connection.close();
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+
 
 
 }

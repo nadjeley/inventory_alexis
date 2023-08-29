@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -47,15 +44,6 @@ public class VendorConnection {
 
     @FXML
     private TableView<Vendor> vendorTable;
-
-    @FXML
-    private Button addVendorButton;
-
-    @FXML
-    private Button removeVendorButton;
-
-    @FXML
-    private Button updateButton;
 
     private Connection connection;
     private VendorController vendorController;
@@ -123,10 +111,28 @@ public class VendorConnection {
 
     @FXML
     private void handleAddVendor() throws SQLException {
-        int id = Integer.parseInt(idTextField.getText());
+        String idText = String.valueOf(idTextField.getText().trim());
         String name = nameTextField.getText();
         String phone = phoneTextField.getText();
         String location = locationTextField.getText();
+
+        if (idText.isEmpty() || name.isEmpty()|| phone== null && location.isEmpty() ){
+            // Show a pop-up message
+            showAlert("Please fill in all the fields.");
+
+            return; // Exit the method early
+        }
+
+        int id;
+        try {
+            id = Integer.parseInt(idText);
+
+        } catch (NumberFormatException e) {
+
+            showAlert("Invalid ID format. Please enter a valid integer.");
+            return; // Exit the method early
+        }
+
 
         vendorController.addVendor(id, name, phone, location);
 
@@ -144,7 +150,14 @@ public class VendorConnection {
         List<Vendor> vendors = vendorController.getAllVendors();
         vendorTable.getItems().setAll(vendors);
     }
-
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        System.out.println("Showing Alert");
+        alert.setTitle("Missing Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 
 
   @FXML

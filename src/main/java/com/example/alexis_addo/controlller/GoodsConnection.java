@@ -4,6 +4,7 @@ import com.example.alexis_addo.model.DatabaseConnector;
 import com.example.alexis_addo.model.dataStructures.Goods;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -44,11 +45,6 @@ public class  GoodsConnection {
     @FXML
     private ChoiceBox<String> categoryChoiceBox;
 
-    @FXML
-    public Button addGoodsButton;
-
-    @FXML
-    public Button removeGoodsButton;
 
     private GoodsController goodController;
 
@@ -66,12 +62,12 @@ public class  GoodsConnection {
         setupTableView();
         connectToDatabase();
         setupGoodsController();
-        //createGoodsTable();
+
 
     }
-    //public void setBillsController(BillController billsController) {
-    // this.billsController = billsController;
-    //  }
+
+
+
     private void connectToDatabase( ) {
         DatabaseConnector databaseConnector = new DatabaseConnector(); // Create an instance of DatabaseConnector
         connection = DatabaseConnector.getConnection(); // Initialize the connection using DatabaseConnector
@@ -90,18 +86,29 @@ public class  GoodsConnection {
         columnPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         // Set the item list for the TableView
-        //ObservableList<Goods> goodsList = FXCollections.observableArrayList();
-        fetchAllGoods();
+        ObservableList<Goods> goodsList = FXCollections.observableArrayList();
+
         goodsTable.setItems(goodsList);
     }
-    public void fetchAllGoods() {
+  // Add Event handler for viewing goods
+    @FXML
+    private void handleView() {
+        try {
+            List<Goods> goods = fetchDataFromDatabase();
+            ObservableList<Goods> goodsList = FXCollections.observableArrayList(goods);
+            goodsTable.setItems(goodsList);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private List<Goods> fetchDataFromDatabase() throws SQLException {
+        List<Goods> goodsData = new ArrayList<>();
 
-        try (Connection connection = databaseConnector.getConnection();
-             Statement statement = connection.createStatement()) {
+        String selectQuery = "SELECT name, category, quantity, price FROM goods";
 
-            String selectQuery = "SELECT * FROM goods";
-            ResultSet resultSet = statement.executeQuery(selectQuery);
+        try (PreparedStatement statement = connection.prepareStatement(selectQuery);
+             ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
@@ -110,64 +117,36 @@ public class  GoodsConnection {
                 double price = resultSet.getDouble("price");
 
                 Goods goods = new Goods(name, category, quantity, price);
-                goodsList.add(goods);
+                goodsData.add(goods);
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw e;
         }
 
-
+        return goodsData;
     }
 
-//    @FXML
-//    private void handleView() {
-//        fetchAllGoods();
-//
-//        goodsTable.setItems(goodsList);
-//    }
-//    @FXML
-//    private void handleViews() {
-//        // Clear the existing table data
-//        goodsTable.getItems().clear();
-//
-//        // Fetch all goods from the database using the GoodsController
-//        List<Goods> allGoods = goodController.fetchAllGoods();
-//
-//        // Set the fetched data in the TableView
-//        goodsTable.getItems().addAll(allGoods);
-//    }
-
-
-
-//    private void fetchGDataFromDatabase() {
-//        String selectQuery = "SELECT name, category, quantity, price FROM goods";
-//
-//        try (Connection connection = DatabaseConnector.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(selectQuery);
-//             ResultSet resultSet = statement.executeQuery()) {
-//
-//            while (resultSet.next()) {
-//                String name = resultSet.getString("name");
-//                String category = resultSet.getString("category");
-//                int quantity = resultSet.getInt("quantity");
-//                double price = resultSet.getDouble("price");
-//
-//                Goods goods = new Goods(name, category, quantity, price);
-//                goodsList.add(goods);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-   // }
 
 
     @FXML
-    private void handleAddGoods() throws SQLException {
+    private void handleAddGoods(ActionEvent event) throws SQLException {
+        System.out.println("Button Clicked");
         String name = nameTextField.getText();
         String category = categoryChoiceBox.getValue(); // Use the selected value from the ChoiceBox
+
+        // Check if any of the fields are empty
+        if (name.isEmpty() && category=="" || category == null ){
+            // Show a pop-up message
+            showAlert("Please fill in all the fields.");
+            return; // Exit the method early
+        }
         int quantity = Integer.parseInt(quantityTextField.getText());
         double price = Double.parseDouble(priceTextField.getText());
+
+
+
+
+
 
         goodController.addGoods(name, category, quantity, price);
 
@@ -178,6 +157,14 @@ public class  GoodsConnection {
         priceTextField.clear();
         // Update the table view
         refreshTableView();
+    }
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        System.out.println("Showing Alert");
+        alert.setTitle("Missing Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

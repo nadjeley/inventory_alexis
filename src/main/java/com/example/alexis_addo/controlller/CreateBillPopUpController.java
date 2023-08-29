@@ -4,10 +4,7 @@ import com.example.alexis_addo.model.DatabaseConnector;
 import com.example.alexis_addo.model.dataStructures.Bill;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -41,12 +38,6 @@ public class CreateBillPopUpController {
     private DatabaseConnector databaseConnector = new DatabaseConnector();
 
 
-
-    public void initialize(URL location, ResourceBundle resources) {
-        //databaseConnector = new DatabaseConnector(); // Initialize the databaseConnector instance
-    }
-
-
     @FXML
     private void onConfirmButtonClicked(ActionEvent event) {
 
@@ -71,7 +62,10 @@ public class CreateBillPopUpController {
     }
 
     public String getEnteredDate() {
-        return datePicker.getValue().toString();
+        LocalDate selectedDate = datePicker.getValue();
+        LocalDate date = datePicker.getValue();
+        return date != null ? date.toString() : null;
+
     }
 
     public String getEnteredTotalAmount() {
